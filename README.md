@@ -1,3 +1,4 @@
+![Logo](Logo.png)
 # Sound analyser & recorder
 Analyser module taken from [Maximilian](https://github.com/micknoise/Maximilian)
 
