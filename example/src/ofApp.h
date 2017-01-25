@@ -2,8 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "sndRecorder.h"
-#include "sndAnalyser.h"
+#include "ofxSoundAnalyser.h"
 
 
 class ofApp : public ofBaseApp {
@@ -20,12 +19,12 @@ public:
     double harmonicsCount;
     
     // --- Sound Input
-    maxiSample      maxiPlayer;
-    bool            playMaxi = false;
-    bool            useMic = true;
-    snd::Recorder   recorder;
-    snd::Analyser   analyser;
-    int             sampleRate;
+    ofxSoundRecorder    recorder;
+    ofxSoundAnalyser    analyser;
+    maxiSample          maxiPlayer;
+    bool                playMaxi = false;
+    bool                useMic = true;
+    int                 sampleRate;
     
     void    stopRec()   { recorder.stopRecording(); }
     void    stopGrb()   { recorder.stopGrabbingSound(); }
