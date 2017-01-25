@@ -22,11 +22,7 @@ void ofApp::setup(){
 
     ofxMaxiSettings::setup( recorder.getSampleRate(), 1, recorder.getBufferSizeCurrent() );
     ofSoundStreamSetup( 1, 1, this, recorder.getSampleRate(), recorder.getBufferSizeCurrent(), 1 );
-    maxiPlayer.load( ofToDataPath( "testsounds/4- RD1.wav" ) );
-    //maxiPlayer.load( ofToDataPath( "testsounds/3- mu400_Inv753_1993.wav" ) );
-    //maxiPlayer.load( ofToDataPath( "testsounds/2- mu1227_1924.wav" ) );
-    //maxiPlayer.load( ofToDataPath( "testsounds/1- poche_mu25_1890_02.wav" ) );
-
+    maxiPlayer.load( ofToDataPath( "Geilo.wav" ) );
 
     playMaxi = true;
 
@@ -69,7 +65,7 @@ void ofApp::checkOctaves() {
         if( value > 2.0 ) {
             //ofLog() << i << " - " << averages.at(i);
             harmonicsCount += 1.0;
-            ofLog() << "harmonicness: " << (harmonicsCount / ofGetFrameNum() );
+//            ofLog() << "harmonicness: " << (harmonicsCount / ofGetFrameNum() );
         }
     }
 
