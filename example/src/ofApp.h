@@ -1,13 +1,12 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxMaxim.h"
 #include "ofxGui.h"
-#include "sndRecorder.hpp"
-#include "sndAnalyser.hpp"
+#include "sndRecorder.h"
+#include "sndAnalyser.h"
 
 
-class ofApp : public ofxiOSApp {
+class ofApp : public ofBaseApp {
     
 public:
     void setup();
@@ -23,8 +22,7 @@ public:
     // --- Sound Input
     maxiSample      maxiPlayer;
     bool            playMaxi = false;
-    bool            useMic = false;
-//    ofSoundPlayer   soundFile;
+    bool            useMic = true;
     snd::Recorder   recorder;
     snd::Analyser   analyser;
     int             sampleRate;
@@ -42,7 +40,6 @@ public:
     void    noLoopPlay()  { recorder.noLoopPlayback(); }
     
     // --- Sound Playback
-    
     ofxPanel        gui;
     ofxButton       startPlaying, startGrabbingSound, startRecording;
     ofxButton       stopPlaying, stopGrabbingSound, stopRecording;

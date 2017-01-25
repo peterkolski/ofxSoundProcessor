@@ -193,10 +193,3 @@ void ofApp::audioOut( float *output, int bufferSize, int nChannels )
         }
     }
 }
-
-
-//--------------------------------------------------------------
-void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
-    useMic = !useMic;
-
-}
