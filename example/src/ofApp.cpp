@@ -75,34 +75,8 @@ void ofApp::checkOctaves() {
 void ofApp::draw(){
     ofBackgroundGradient( ofColor::lightGrey, ofColor::black );
 
-    // -----------------------------------------------------------
-    // --- Drawing Onset
-    if ( analyser.getIfOnset() )
-    {
-        ofSetColor( ofColor::wheat, 255 );
-        ofDrawRectangle( 0, 0, ofGetWidth(), 400 );
+    drawOnset();
 
-        checkOctaves();
-    }
-
-
-    ofPushStyle();
-    float y1 = ofGetHeight() * 0.5;
-    ofSetColor(0);
-    ofSetLineWidth(2);
-    ofDrawLine(0, y1, ofGetWidth(), y1);
-
-    // --- Drawing Buffer TimeLine
-    ofSetColor( ofColor::lightBlue );
-    ofSetLineWidth(1);
-    for(int i=0; i < recorder.getBufferSizeCurrent(); i++){
-        float p = i / (float)( recorder.getBufferSizeCurrent() - 1 );
-        float x = p * ofGetWidth();
-        float y2 = y1 + recorder.getBufferCurrent()[i] * 800;
-
-        ofDrawLine(x, y1, x, y2);
-    }
-    ofPopStyle();
 
     // -----------------------------------------------------------
     // --- Drawing FFT
@@ -155,6 +129,36 @@ void ofApp::draw(){
     ofDrawBitmapStringHighlight( "FFT Flatness Max: " + ofToString( analyser.getFFTspectralFlatnessMax() ), 100, 400 );
 
     gui.draw();
+}
+
+void ofApp::drawOnset()
+{
+    if ( analyser.getIfOnset() )
+    {
+        ofSetColor( ofColor::wheat, 255 );
+        ofDrawRectangle( 0, 0, ofGetWidth(), 400 );
+
+        checkOctaves();
+    }
+
+
+    ofPushStyle();
+    float y1 = ofGetHeight() * 0.5;
+    ofSetColor(0);
+    ofSetLineWidth(2);
+    ofDrawLine(0, y1, ofGetWidth(), y1);
+
+    // --- Drawing Buffer TimeLine
+    ofSetColor( ofColor::lightBlue );
+    ofSetLineWidth(1);
+    for( int i=0; i < recorder.getBufferSizeCurrent(); i++){
+        float p = i / (float)( recorder.getBufferSizeCurrent() - 1 );
+        float x = p * ofGetWidth();
+        float y2 = y1 + recorder.getBufferCurrent()[i] * 800;
+
+        ofDrawLine(x, y1, x, y2);
+    }
+    ofPopStyle();
 }
 //--------------------------------------------------------------
 

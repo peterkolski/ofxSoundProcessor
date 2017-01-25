@@ -44,4 +44,5 @@ public:
     ofxButton       stopPlaying, stopGrabbingSound, stopRecording;
     ofxButton       restartPlaying, resetBuffer, loopPlayback, noLoopPlayback;
     ofxButton       resetAllMinMax;
+    void drawOnset();
 };
