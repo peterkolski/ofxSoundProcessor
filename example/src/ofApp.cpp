@@ -3,14 +3,6 @@
 //--------------------------------------------------------------
 
 void ofApp::setup(){
-
-    ofSetOrientation( OF_ORIENTATION_90_LEFT );
-
-//    soundFile.load( "testsounds/1- poche_mu25_1890.wav" );
-//    soundFile.play();
-//    soundFile.setLoop( false );
-//    soundFile.setVolume( 1.0 );
-
     sampleRate = 44100;
 
     recorder.init( 512, sampleRate );
@@ -202,53 +194,9 @@ void ofApp::audioOut( float *output, int bufferSize, int nChannels )
     }
 }
 
-//--------------------------------------------------------------
-void ofApp::exit(){
-}
-
-//--------------------------------------------------------------
-void ofApp::touchDown(ofTouchEventArgs & touch){
-}
-
-//--------------------------------------------------------------
-void ofApp::touchMoved(ofTouchEventArgs & touch){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::touchUp(ofTouchEventArgs & touch){
-
-}
 
 //--------------------------------------------------------------
 void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
     useMic = !useMic;
 
-//    recorder.startPlaying();
-//    soundFile.stop();
 }
-
-//--------------------------------------------------------------
-void ofApp::touchCancelled(ofTouchEventArgs & touch){
-}
-
-//--------------------------------------------------------------
-void ofApp::lostFocus(){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotFocus(){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMemoryWarning(){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::deviceOrientationChanged(int newOrientation){
-//    ofSetOrientation((ofOrientation)newOrientation);
-}
-
