@@ -5,7 +5,7 @@
 # ===================== CMake Settings ===================
 # ========================================================
 cmake_minimum_required( VERSION 3.3 )
-project( openframeworks )
+project( ofxSoundProcessor_Example )
 
 # ========================================================
 # ===================== User Settings ====================
