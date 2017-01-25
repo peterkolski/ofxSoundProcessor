@@ -51,4 +51,5 @@ public:
     void drawFFT( float magnScale );
     void drawOctave( float magnScale );
     void drawInfo();
+    void drawBuffer();
 };

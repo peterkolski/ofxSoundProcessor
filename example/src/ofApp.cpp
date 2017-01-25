@@ -74,14 +74,13 @@ void ofApp::checkOctaves() {
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackgroundGradient( ofColor::lightGrey, ofColor::black );
+    ofBackgroundGradient( ofColor::gray, ofColor::black );
 
     drawOnset();
-
+    drawBuffer();
     drawFFT( magnitude );
     drawOctave( magnitude);
 
-    // -----------------------------------------------------------
     drawInfo();
 
     gui.draw();
@@ -149,8 +148,10 @@ void ofApp::drawOnset()
 
         checkOctaves();
     }
+}
 
-
+void ofApp::drawBuffer()
+{
     ofPushStyle();
     float y1 = ofGetHeight() * 0.5;
     ofSetColor(0);
