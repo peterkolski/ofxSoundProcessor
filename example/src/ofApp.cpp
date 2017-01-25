@@ -39,6 +39,7 @@ void ofApp::setup(){
     noLoopPlayback.addListener( this, &ofApp::noLoopPlay );
 
     gui.setup( "SoundAnalyser" );
+    gui.add( magnitude.setup( "Strength", 5, 0, 10 ) );
     gui.add( startGrabbingSound.setup( "startGrabbingSound" ) );
     gui.add( startRecording.setup( "startRecording" ) );
     gui.add( stopGrabbingSound.setup( "stopGrabbingSound" ) );
@@ -77,44 +78,18 @@ void ofApp::draw(){
 
     drawOnset();
 
+    drawFFT( magnitude );
+    drawOctave( magnitude);
 
     // -----------------------------------------------------------
-    // --- Drawing FFT
-    int magnScale = 10;
-    int i  = 0;
-    int xStep = ofGetWidth() / analyser.getFFTSpectralMagnitudes().size();
-    int yLine = ofGetHeight() / 3;
+    drawInfo();
 
-    ofSetColor(0);
-    ofSetLineWidth(2);
-    ofDrawLine( 0, yLine, ofGetWidth(), yLine );
+    gui.draw();
+}
 
-    ofSetColor( ofColor::red,255 );
-    for( auto &magnMax : analyser.getFFTSpectralMagnitudesMaximums() ) {
-        ofDrawRectangle( xStep * i++, yLine, xStep,  -( magnMax * magnScale ) );
-    }
-
-    ofSetColor( ofColor::lightGreen,255 );
-    i = 0;
-    for( auto &magn : analyser.getFFTSpectralMagnitudes() ) {
-        ofDrawRectangle( xStep * i++, yLine, xStep,  -( magn * magnScale ) );
-    }
-
-    // -----------------------------------------------------------
-    // --- Drawing Octave Analyser
-    ofSetColor( ofColor::blue );
-    xStep = ofGetWidth() / analyser.getOctaveAverages().size();
-    yLine = ofGetHeight() * 3 / 4;
-    float height = 0.0;
-    i = 0;
-    for( auto &_octaveAverage : analyser.getOctaveAverages() )
-    {
-        height = _octaveAverage * 20 * 3 / 2;
-        ofDrawRectangle( xStep * i++, yLine, xStep,  -( height * magnScale ) );
-    }
-
-    // -----------------------------------------------------------
-    ofDrawBitmapStringHighlight( "BufferSize: " + ofToString(   recorder.getBufferRecorded().size() ) , 100, 100 );
+void ofApp::drawInfo()
+{
+    ofDrawBitmapStringHighlight( "BufferSize: " + ofToString( recorder.getBufferRecorded().size() ) , 100, 100 );
     ofDrawBitmapStringHighlight( "Time: " + ofToString( ofGetElapsedTimeMillis() / 1000 ) , 100, 150 );
     ofDrawBitmapStringHighlight( "RMS: " + ofToString(          analyser.getRMS() ), 100, 200 );
     ofDrawBitmapStringHighlight( "MaxRMS: " + ofToString(       analyser.getMaxRMS() ), 100, 220 );
@@ -127,8 +102,42 @@ void ofApp::draw(){
     ofDrawBitmapStringHighlight( "FFT Flatness: " + ofToString( analyser.getFFTspectralFlatness() ), 100, 360 );
     ofDrawBitmapStringHighlight( "FFT Flatness Min: " + ofToString( analyser.getFFTspectralFlatnessMin() ), 100, 380 );
     ofDrawBitmapStringHighlight( "FFT Flatness Max: " + ofToString( analyser.getFFTspectralFlatnessMax() ), 100, 400 );
+}
 
-    gui.draw();
+void ofApp::drawOctave( float magnScale )
+{
+    ofSetColor( ofColor::blue );
+    int xStep = ofGetWidth() / analyser.getOctaveAverages().size();
+    int yLine = ofGetHeight() * 3 / 4;
+    float height = 0.0;
+    int i = 0;
+    for( auto &_octaveAverage : analyser.getOctaveAverages() )
+    {
+        height = _octaveAverage * 20 * 3 / 2;
+        ofDrawRectangle( xStep * i++, yLine, xStep,  -( height * magnScale ) );
+    }
+}
+
+void ofApp::drawFFT( float magnScale )
+{
+    int i  = 0;
+    int xStep = ofGetWidth() / analyser.getFFTSpectralMagnitudes().size();
+    int yLine = ofGetHeight() / 3;
+
+    ofSetColor(0);
+    ofSetLineWidth(2);
+    ofDrawLine( 0, yLine, ofGetWidth(), yLine );
+
+    ofSetColor( ofColor::red, 255 );
+    for( auto &magnMax : analyser.getFFTSpectralMagnitudesMaximums() ) {
+        ofDrawRectangle( xStep * i++, yLine, xStep,  -( magnMax * magnScale ) );
+    }
+
+    ofSetColor( ofColor::lightGreen, 255 );
+    i = 0;
+    for( auto &magn : analyser.getFFTSpectralMagnitudes() ) {
+        ofDrawRectangle( xStep * i++, yLine, xStep,  -( magn * magnScale ) );
+    }
 }
 
 void ofApp::drawOnset()

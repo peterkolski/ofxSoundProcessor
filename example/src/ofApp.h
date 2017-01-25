@@ -44,5 +44,11 @@ public:
     ofxButton       stopPlaying, stopGrabbingSound, stopRecording;
     ofxButton       restartPlaying, resetBuffer, loopPlayback, noLoopPlayback;
     ofxButton       resetAllMinMax;
+    ofxFloatSlider  magnitude;
+
+
     void drawOnset();
+    void drawFFT( float magnScale );
+    void drawOctave( float magnScale );
+    void drawInfo();
 };
