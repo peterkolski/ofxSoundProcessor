@@ -11,7 +11,7 @@
     - Peak frequ
  */
 
-#include "sndAnalyser.hpp"
+#include "sndAnalyser.h"
 
 #include <numeric>
 #include <cmath>

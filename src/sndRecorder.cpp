@@ -6,7 +6,7 @@
 //
 //
 
-#include "sndRecorder.hpp"
+#include "sndRecorder.h"
 
 namespace snd {
     void Recorder::init( int bufferSize, int samplerate  )
