@@ -9,7 +9,6 @@
 #ifndef sndAnalyser_hpp
 #define sndAnalyser_hpp
 
-//#include "ofxiOS.h"
 #include "ofxMaxim.h"
 #include <vector>
 #include <queue>

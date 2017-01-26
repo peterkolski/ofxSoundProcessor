@@ -1,8 +1,6 @@
+![Logo](Logo.png)
 # Sound analyser & recorder
 Analyser module taken from [Maximilian](https://github.com/micknoise/Maximilian)
-
-**Is not working yet!!! (In transition phase into an ofxAddon)**
-
 
 ## Analyser:
 
@@ -20,3 +18,6 @@ Analyser module taken from [Maximilian](https://github.com/micknoise/Maximilian)
 * Record sound into RAM
 * Playback
 * Looping
+
+
+**Note: iOS App not tested yet**
