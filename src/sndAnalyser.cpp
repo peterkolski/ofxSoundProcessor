@@ -19,6 +19,12 @@
 
 namespace snd
 {
+    /// Sets all the sizes of rates and buffers  [Suggested parameters below]
+    /// \param samplingRate         44100
+    /// \param fftSize              BufferSize * 2 [with BufferSize = 512]
+    /// \param sampleSize           BufferSize
+    /// \param hopSize              BufferSize / 2
+    /// \param nAveragesPerOctave   100
     void    Analyser::setup( float samplingRate, int fftSize,  int sampleSize, int hopSize, int nAveragesPerOctave )
     {
 //        ofLogWarning() << "Analyser setup should be called before 'ofSoundStreamSetup()'";
@@ -36,7 +42,10 @@ namespace snd
     }
     
     //--------------------------------------------------------------
-    
+    /// Fills the buffer with the current sound and calculates the analysed values.
+    /// Useful if you grabbed the sound via the ofxSoundRecorder already. Otherwise use
+    /// grabAudioBuffer()
+    /// \param bufferCurrent    sound buffer
     void Analyser::update( vector<float> &bufferCurrent )
     {
         calculateAmplitude( bufferCurrent );
