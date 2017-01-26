@@ -23,6 +23,8 @@ namespace snd
     public:
         void    setup( float samplingRate, int fftSize,  int sampleSize, int hopSize, int nAveragesPerOctave );
         void    update( vector< float > &bufferCurrent );
+        void    grabAudioBuffer( float* input );
+
         void    resetAllMinMax();
         void    resetMaxRMS()               { maxRMS_ = 0.0; }
         void    resetMaxAmplitude()         { maxAmplitude_ = 0.0; }
@@ -48,6 +50,7 @@ namespace snd
         float   getFFTspectralRmsAverage();
         double     getOctaveHarmonicsCount( float threshold );
 
+        vector< float > &getAudioBuffer()                      { return bufferCurrent_; }
         vector< float > &getFFTSpectralMagnitudes()            { return spectralMagnitudes_; }
         vector< float > &getFFTSpectralMagnitudesMaximums()    { return spectralMagnitudesMax_; }
         vector< float > &getFFTSpectralMagnitudesDB()          { return spectralMagnitudesDB_; }
@@ -81,6 +84,7 @@ namespace snd
         long    numberFrames_       = 0;
         double  harmonicsCount      = 0;
         
+        vector< float >             bufferCurrent_;
         vector< float >             onsetMeasureValue_;
         vector< float >             onsetValueDifference_;
         vector< float >             spectralMagnitudes_;

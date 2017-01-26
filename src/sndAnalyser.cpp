@@ -31,6 +31,7 @@ namespace snd
 //        ofxMaxiSettings::setup(sampleRate, 2, initialBufferSize);
         
         spectralFFTsize_        = fftSize;
+        bufferCurrent_          = vector< float >( sampleSize, 0.0 );
         spectralMagnitudes_     = vector< float >( spectralFFTsize_, 0.0 );
         spectralMagnitudesMax_  = vector< float >( spectralFFTsize_, 0.0 );
         spectralMagnitudesDB_   = vector< float >( spectralFFTsize_, 0.0 );
@@ -48,10 +49,25 @@ namespace snd
     /// \param bufferCurrent    sound buffer
     void Analyser::update( vector<float> &bufferCurrent )
     {
-        calculateAmplitude( bufferCurrent );
-        calculateRMS( bufferCurrent );
-        updateOnsetDetection( bufferCurrent );
-        updateFFT_Octave( bufferCurrent );
+        bufferCurrent_ = bufferCurrent;
+
+        calculateAmplitude( bufferCurrent_ );
+        calculateRMS( bufferCurrent_ );
+        updateOnsetDetection( bufferCurrent_ );
+        updateFFT_Octave( bufferCurrent_ );
+    }
+
+    /// Updates the audio buffer and executes the analysis
+    /// Should be put into the OF function  [void audioIn(  float * input, int bufferSize, int nChannels ) ]
+    /// \param input Pass the input pointer from audioIn()
+    void Analyser::grabAudioBuffer( float* input )
+    {
+        for (int i = 0; i < bufferCurrent_.size(); i++)
+        {
+            bufferCurrent_[ i ] = input[ i ];
+        }
+
+        update( bufferCurrent_ );
     }
     
     //--------------------------------------------------------------
