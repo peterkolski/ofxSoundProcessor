@@ -1,13 +1,13 @@
 //
-//  sndRecorder.hpp
+//  sndRecorder.h
 //  SoundAnalyser
 //
 //  Created by Peter A. Kolski on 25.02.16.
 //
 //
 
-#ifndef sndRecorder_hpp
-#define sndRecorder_hpp
+#ifndef sndRecorder_h
+#define sndRecorder_h
 
 #include <iostream>
 #include <vector>
@@ -64,4 +64,4 @@ namespace snd {
     
 }
 
-#endif /* sndRecorder_hpp */
+#endif /* sndRecorder_h */

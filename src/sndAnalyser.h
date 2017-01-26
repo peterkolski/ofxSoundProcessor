@@ -1,13 +1,13 @@
 //
-//  sndAnalyser.hpp
+//  sndAnalyser.h
 //  SoundAnalyser
 //
 //  Created by Peter A. Kolski on 27.02.16.
 //
 //
 
-#ifndef sndAnalyser_hpp
-#define sndAnalyser_hpp
+#ifndef sndAnalyser_h
+#define sndAnalyser_h
 
 #include "ofxMaxim.h"
 #include <vector>
@@ -100,4 +100,4 @@ namespace snd
 }
 
 
-#endif /* sndAnalyser_hpp */
+#endif /* sndAnalyser_h */
