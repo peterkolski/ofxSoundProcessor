@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "ofxSoundAnalyser.h"
+#include "ofxSoundProcessor.h"
 
 
 class ofApp : public ofBaseApp {
