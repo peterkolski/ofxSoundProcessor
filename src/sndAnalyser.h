@@ -21,6 +21,7 @@ namespace snd
     class Analyser
     {
     public:
+        ~Analyser() {}
         void    setup( float samplingRate, int fftSize,  int sampleSize, int hopSize, int nAveragesPerOctave );
         void    update( vector< float > &bufferCurrent );
         void    grabAudioBuffer( float* input );
